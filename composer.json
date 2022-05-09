@@ -1,0 +1,14 @@
+{
+    "name": "pasha/13",
+    "autoload": {
+        "psr-4": {
+            "App_hospital\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "PashaAmeri",
+            "email": "a.pasha.ameri@gmail.com"
+        }
+    ]
+}
