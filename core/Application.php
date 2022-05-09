@@ -16,7 +16,7 @@ class Application
     public function __construct()
     {
 
-        $this->routes = new Router();
+        $this->routes = new Router(new Request());
     }
 
     public function get($uri, $callback)

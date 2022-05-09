@@ -8,12 +8,18 @@ class SiteController
     public static function homeControl()
     {
 
-        echo 'home page';
+        return 'home page';
     }
 
     public static function dashbordControl()
     {
 
-        echo 'dashbord page';
+        return 'dashbord page';
+    }
+
+    public static function notFound()
+    {
+
+        return '404: not found';
     }
 }
