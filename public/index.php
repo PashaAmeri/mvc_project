@@ -2,15 +2,18 @@
 
 namespace App_hospital;
 
+use App_hospital\app\controller\SiteController;
 use App_hospital\core\Application;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+$root_dir = __DIR__ . '/../';
+require_once $root_dir . 'vendor/autoload.php';
 
+//new instants of Application class
 $app = new Application();
 
-$app->get('/', function () {
+// route to '/'
+$app->get('/', [SiteController::class, 'homeControl']);
 
-    return 'Home page';
-});
+$app->get('/dashbord', [SiteController::class, 'dashbordControl']);
 
 $app->run();

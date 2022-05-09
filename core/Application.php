@@ -1,5 +1,11 @@
 <?php
 
+/*
+    class: Application
+
+    This class manage tha application behavior
+*/
+
 namespace App_hospital\core;
 
 class Application
