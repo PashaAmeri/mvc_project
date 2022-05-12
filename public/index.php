@@ -9,11 +9,11 @@ $root_dir = __DIR__ . '/../';
 require_once $root_dir . 'vendor/autoload.php';
 
 //new instants of Application class
-$app = new Application();
+$app = new Application(__DIR__ . '/../');
 
-// route to '/'
+// routes
 $app->get('/', [SiteController::class, 'homeControl']);
+$app->get('/dashboard', [SiteController::class, 'dashbordControl']);
 
-$app->get('/dashbord', [SiteController::class, 'dashbordControl']);
-
+//run the program
 $app->run();

@@ -39,8 +39,10 @@ class Router
 
         if (is_null($callback)) {
 
+            //set status code to 404
             (new Response())->setStatuseCode(404);
-            return SiteController::notFound();
+
+            return SiteController::notFound($uri);
         } elseif (is_array($callback)) {
 
             $callback[0] = new $callback[0];
