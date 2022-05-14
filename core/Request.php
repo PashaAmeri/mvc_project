@@ -18,7 +18,7 @@ class Request
     public function getURI()
     {
 
-        $uri = strtolower($_SERVER['REQUEST_URI'] ?? '/');
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
         $position = strpos($uri, '?');
 
         if ($position === false) {

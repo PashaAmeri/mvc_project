@@ -1,11 +1,21 @@
 <?php
 
-namespace App_hospital\views;
+namespace App_hospital\core\view;
 
 use App_hospital\core\Application;
 
 class ViewRender
 {
+
+    protected static function getHTML()
+    {
+
+        ob_start();
+
+        include_once Application::$ROOT_DIR . '/views/layouts/basic_html/index.php';
+
+        return ob_get_clean();
+    }
 
     protected static function getLayoutContent()
     {
@@ -30,7 +40,9 @@ class ViewRender
     public static function renderView($page)
     {
 
-        $layout_content = self::getLayoutContent();
+        $html = self::getHTML();
         $view_content = self::renderViewContent($page);
+
+        return str_replace('a"[content_of_the_page]"a', $view_content, $html);
     }
 }

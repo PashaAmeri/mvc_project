@@ -2,7 +2,7 @@
     "name": "pasha/13",
     "autoload": {
         "psr-4": {
-            "App_hospital\\": "../"
+            "App_hospital\\": "./"
         }
     },
     "authors": [

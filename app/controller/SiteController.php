@@ -2,7 +2,7 @@
 
 namespace App_hospital\app\controller;
 
-use App_hospital\views\ViewRender;
+use App_hospital\core\view\ViewRender;
 
 class SiteController
 {
@@ -19,11 +19,23 @@ class SiteController
         return ViewRender::renderView('/dashboard');
     }
 
-    public static function notFound($uri)
+    public static function notFound()
     {
 
         // return '404: not found';
 
         return ViewRender::renderView('/404');
+    }
+
+    public static function signUp()
+    {
+
+        return ViewRender::renderView('/signup');
+    }
+
+    public static function logIn()
+    {
+
+        return ViewRender::renderView('/login');
     }
 }
