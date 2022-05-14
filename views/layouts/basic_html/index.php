@@ -15,7 +15,7 @@
 
 <body>
 
-    {{'"[content_of_the_page]"'}}
+    a"[content_of_the_page]"a
 
 </body>
 
