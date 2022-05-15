@@ -17,7 +17,7 @@ $app->get('/home', [SiteController::class, 'homeControl']);
 $app->get('/dashboard', [SiteController::class, 'dashbordControl']);
 $app->get('/signup', [SiteController::class, 'signUp']);
 $app->get('/login', [SiteController::class, 'logIn']);
-
+$app->get('/profile', [SiteController::class, 'docProfile']);
 
 //run the program
 $app->run();

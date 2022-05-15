@@ -38,4 +38,10 @@ class SiteController
 
         return ViewRender::renderView('/login');
     }
+
+    public static function docProfile()
+    {
+
+        return ViewRender::renderView('/doc_profile');
+    }
 }
