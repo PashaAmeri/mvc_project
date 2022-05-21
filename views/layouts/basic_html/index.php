@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body class="scroll-smooth">
 
     a"[content_of_the_page]"a
 

@@ -11,13 +11,19 @@ namespace App_hospital\core;
 class Application
 {
 
-    public static $ROOT_DIR;
+    public static string $ROOT_DIR;
+    public static string $HOST;
+    public static Application $app;
+
     public Router $routes;
 
-    public function __construct($root_dir)
+    public function __construct($root_dir, $host)
     {
 
         self::$ROOT_DIR = $root_dir;
+        self::$HOST = $host;
+        self::$app = $this;
+
         $this->routes = new Router(new Request());
     }
 

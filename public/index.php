@@ -9,7 +9,7 @@ $root_dir = __DIR__ . '\..\\';
 require_once $root_dir . 'vendor/autoload.php';
 
 //new instants of Application class
-$app = new Application(__DIR__ . '/../');
+$app = new Application(__DIR__ . '/../', 'http://localhost:8080');
 
 // routes
 $app->get('/', [SiteController::class, 'homeControl']);

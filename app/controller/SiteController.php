@@ -10,7 +10,7 @@ class SiteController
     public static function homeControl()
     {
 
-        return ViewRender::renderView('/home');
+        return ViewRender::renderView('/home', ['name' => 'armin']);
     }
 
     public static function dashbordControl()
@@ -21,8 +21,6 @@ class SiteController
 
     public static function notFound()
     {
-
-        // return '404: not found';
 
         return ViewRender::renderView('/404');
     }
