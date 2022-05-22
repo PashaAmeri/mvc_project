@@ -4,7 +4,7 @@
 
         <?php
 
-        foreach ($main_doctors as $doctor) {
+        foreach ($doctors as $doctor) {
         ?>
 
             <div class="bg-white font-semibold text-center rounded-3xl border shadow-lg p-10 w-80">
@@ -19,11 +19,6 @@
 
         }
         ?>
-        <div class="m-8">
-
-        <a href="/doctors"><span class="bg-blue-500 rounded-full px-16 text-white py-3 text-xl ">More</span></a>
-
-        </div>
 
     </div>
 

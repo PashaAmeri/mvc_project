@@ -9,13 +9,12 @@ abstract class Model
 {
 
     private MysqlDatabase $db;
-
     protected string $table;
 
     public function __construct()
     {
-        $this->tableName();
 
+        $this->tableName();
         $this->db = Application::$app->db->table($this->table);
     }
 
@@ -24,6 +23,7 @@ abstract class Model
 
     public static function do(): Model
     {
+
         return new static;
     }
 
@@ -33,9 +33,10 @@ abstract class Model
         return $this->db->select()->fetchAll();
     }
     // return the record
-    public function find(string $value, string $col = 'id')
+    public function find(string $value, string $col = 'id', $operation = '=')
     {
-        return  $this->db->select()->where($col, $value)->fetchAll();
+
+        return  $this->db->select()->where($col, $value, $operation)->fetchAll();
     }
 
     // make a new recorde
@@ -43,8 +44,8 @@ abstract class Model
     {
 
         return $this->db->insert($data)->exec(); //statement;
-
     }
+
     public function delete(string $val1, string $val2, string $operation = '='): bool
     {
 
@@ -64,10 +65,20 @@ abstract class Model
         return $this->db->fetchAll();
     }
 
-
     public function update(array $data, string $val1, string $val2, string $operation = '='): bool
     {
 
         return $this->db->update($data)->where($val1,  $val2,  $operation)->exec();
     }
-}
+
+    public function findFieldsAll(array $fields, string $value, string $col = 'id', string $operation = '=')
+    {
+
+        return  $this->db->select($fields)->where($col, $value, $operation)->fetchAll();
+    }
+
+   public function findFieldsAllLike(array $fields, string $value, string $col = 'ID', string $operation = '=')
+    {
+
+        return  $this->db->select($fields)->where($col, $value, $operation)->fetchAll();
+    }}

@@ -10,5 +10,8 @@
             "name": "PashaAmeri",
             "email": "a.pasha.ameri@gmail.com"
         }
-    ]
+    ],
+    "require": {
+        "vlucas/phpdotenv": "^5.4"
+    }
 }

@@ -6,7 +6,7 @@ use App_hospital\core\Application;
 
 class MysqlDatabase
 {
-    
+
     private \PDO $db;
     private string $table;
     private string $query;
@@ -98,7 +98,7 @@ class MysqlDatabase
 
     public function fetch()
     {
-        
+
         $statement = $this->db->prepare($this->query);
         foreach ($this->fields as $key => $value) {
             $statement->bindValue(":$key", $value);
@@ -132,9 +132,7 @@ class MysqlDatabase
     {
 
         $this->query =
-            "DELETE FROM " .$this->table ;
+            "DELETE FROM " . $this->table;
         return $this;
-
     }
-    
 }

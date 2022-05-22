@@ -10,7 +10,9 @@ class SiteController
     public static function homeControl()
     {
 
-        return ViewRender::renderView('/home', ['name' => 'armin']);
+        $data['main_doctors'] = GetDataDB::getDoctors();
+
+        return ViewRender::renderView('/home', $data);
     }
 
     public static function dashbordControl()
@@ -41,5 +43,12 @@ class SiteController
     {
 
         return ViewRender::renderView('/doc_profile');
+    }
+
+    public static function doctorsControl()
+    {
+        $data['doctors'] = GetForm::getSearch();
+
+        return ViewRender::renderView('/doctors', $data);
     }
 }
