@@ -38,7 +38,8 @@ class GetForm
         $form_data = Application::$app->request->getBody();
 
         $data = $form_data['search'] ?? null;
+        $order = $form_data['order'];
 
-        return GetDataDB::searchDoctors("%$data%", 'name');
+        return GetDataDB::searchDoctors("%$data%", $order);
     }
 }

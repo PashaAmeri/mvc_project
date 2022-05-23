@@ -48,6 +48,7 @@ class SiteController
     public static function doctorsControl()
     {
         $data['doctors'] = GetForm::getSearch();
+        $data['departments'] = GetDataDB::getDepartments();
 
         return ViewRender::renderView('/doctors', $data);
     }

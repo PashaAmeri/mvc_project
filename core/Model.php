@@ -77,8 +77,14 @@ abstract class Model
         return  $this->db->select($fields)->where($col, $value, $operation)->fetchAll();
     }
 
-   public function findFieldsAllLike(array $fields, string $value, string $col = 'ID', string $operation = '=')
+    public function findFieldsAllLike(array $fields, string $value, string $col = 'ID', string $operation = '=')
     {
 
         return  $this->db->select($fields)->where($col, $value, $operation)->fetchAll();
-    }}
+    }
+
+    public function join(array $fields, string $join_table, string $col1 = 'ID', string $col2 = 'user_id', string $operation_join = '=', $order = 'ACS', string $where1 = null, string $where2 = null, string $operation_where = '=')
+    {
+        return $this->db->select($fields)->innerJoin($this->table, $join_table, $col1, $col2, $operation_join)->where($where1, $where2, $operation_where)->order($where1, $order)->fetchAll();
+    }
+}

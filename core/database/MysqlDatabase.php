@@ -67,6 +67,8 @@ class MysqlDatabase
         return $this;
     }
 
+
+
     public function update(array $fields): MysqlDatabase
     {
 
@@ -92,6 +94,30 @@ class MysqlDatabase
         // NOTE: WE CAN ADD OR WHERE
         // NOTE: WE CAN ADD AND WHERE
         $this->query .= " WHERE $val1 $operation '$val2'";
+
+        return $this;
+    }
+
+    public function order($col, $order): MysqlDatabase
+    {
+
+        // NOTE: WE CAN ADD OR WHERE
+        // NOTE: WE CAN ADD AND WHERE
+        $this->query .= " ORDER BY $col $order";
+
+        return $this;
+    }
+
+    public function innerJoin(string $table1, string $table2, string $col1, string $col2, string $operation = '='): MysqlDatabase
+    {
+
+        $this->where = [
+            "$table1.$col1", "$table2.$col2", $operation
+        ];
+
+        // NOTE: WE CAN ADD OR WHERE
+        // NOTE: WE CAN ADD AND WHERE
+        $this->query .= " INNER JOIN $table2 ON $table1.$col1 $operation $table2.$col2";
 
         return $this;
     }
