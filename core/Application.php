@@ -10,6 +10,7 @@ namespace App_hospital\core;
 
 use App_hospital\core\database\Database;
 use App_hospital\core\database\MysqlDatabase;
+use App_hospital\exceptions\MiddlewareException;
 
 class Application
 {
@@ -34,10 +35,8 @@ class Application
         self::$HOST = $host;
         self::$app = $this;
 
-        $this->routes = new Router(new Request());
-        $this->request = new Request();
+        $this->routes = new Router($this->request = new Request());
         $this->response = new Response;
-
 
         // self::$ROOT_DIR = $rootPath;
         // self::$app = $this;
@@ -49,19 +48,24 @@ class Application
         $this->db = new MysqlDatabase($this->pdo);
     }
 
-    public function get($uri, $callback)
+    public function get($uri, $callback, $middleware = null)
     {
-        $this->routes->get($uri, $callback);
+        $this->routes->get($uri, $callback, $middleware);
     }
 
-    public function post($uri, $callback)
+    public function post($uri, $callback, $middleware = null)
     {
-        $this->routes->post($uri, $callback);
+        $this->routes->post($uri, $callback, $middleware);
     }
 
 
     public function run()
     {
-        echo $this->routes->resolve();
+        try {
+            echo $this->routes->resolve();
+        } catch (MiddlewareException $exception) {
+
+            $exception->run();
+        }
     }
 }

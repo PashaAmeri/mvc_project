@@ -39,6 +39,12 @@ abstract class Model
         return  $this->db->select()->where($col, $value, $operation)->fetchAll();
     }
 
+    public function find2(string $value, string $col = 'id', $operation = '=', $col2, $value2, $operation2)
+    {
+
+        return  $this->db->select()->where($col, $value, $operation)->and()->where($col2, $value2, $operation2)->fetchAll();
+    }
+
     // make a new recorde
     public function create(array $data): bool
     {
@@ -59,7 +65,7 @@ abstract class Model
     }
 
     // return all the filtered  records by where method
-    public function get(): array|false
+    public function get()
     {
 
         return $this->db->fetchAll();
@@ -83,8 +89,18 @@ abstract class Model
         return  $this->db->select($fields)->where($col, $value, $operation)->fetchAll();
     }
 
-    public function join(array $fields, string $join_table, string $col1 = 'ID', string $col2 = 'user_id', string $operation_join = '=', $order = 'ACS', string $where1 = null, string $where2 = null, string $operation_where = '=')
+    public function joinOrder(array $fields, string $join_table, string $col1 = 'ID', string $col2 = 'user_id', string $operation_join = '=', $order = 'ACS', string $where1 = null, string $where2 = null, string $operation_where = '=')
     {
         return $this->db->select($fields)->innerJoin($this->table, $join_table, $col1, $col2, $operation_join)->where($where1, $where2, $operation_where)->order($where1, $order)->fetchAll();
+    }
+
+    public function join(array $fields, string $join_table, string $col1 = 'ID', string $col2 = 'user_id', string $operation_join = '=', string $where1 = null, string $where2 = null, string $operation_where = '=')
+    {
+        return $this->db->select($fields)->innerJoin($this->table, $join_table, $col1, $col2, $operation_join)->where($where1, $where2, $operation_where)->fetchAll();
+    }
+
+    public function join2(array $fields, string $join_table1, string $col1 = 'ID', string $col2 = 'user_id', string $operation_join1 = '=', string $join_table2, string $col3 = 'ID', string $col4 = 'user_id', string $operation_join2 = '=', $order = 'ACS', string $where1 = null, string $where2 = null, string $operation_where = '=')
+    {
+        return $this->db->select($fields)->innerJoin($this->table, $join_table1, $col1, $col2, $operation_join1)->innerJoin($this->table, $join_table2, $col3, $col4, $operation_join2)->where($where1, $where2, $operation_where)->order($where1, $order)->fetchAll();
     }
 }
