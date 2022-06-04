@@ -2,6 +2,7 @@
 
 namespace App_hospital\app\controller;
 
+use App_hospital\core\Application;
 use App_hospital\core\view\ViewRender;
 
 class SiteController
@@ -18,7 +19,22 @@ class SiteController
     public static function dashbordControl()
     {
 
-        return ViewRender::renderView('/dashboard');
+        $data = [
+            'not_verify_doctors' => GetDataDB::getDoctorsNotVerify(),
+            'not_verify_admins' => GetData::getadminsNotVerify(),
+        ];
+
+        return ViewRender::renderView('/dashboard', $data);
+    }
+
+
+    public static function dashbordControlPost()
+    {
+
+        getForm::VerifyDoc();
+
+
+        Application::$app->response->reDir('/dashboard');
     }
 
     public static function notFound()

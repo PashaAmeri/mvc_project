@@ -98,6 +98,13 @@ class MysqlDatabase
         return $this;
     }
 
+    public function and()
+    {
+
+        $this->query .= " AND";
+        return $this;
+    }
+
     public function order($col, $order): MysqlDatabase
     {
 
@@ -141,6 +148,9 @@ class MysqlDatabase
             $statement->bindValue(":$key", $value);
         }
 
+        // var_dump($statement);
+        // exit;
+
         $statement->execute();
         return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
@@ -148,10 +158,13 @@ class MysqlDatabase
     public function exec(): bool
     {
 
+     
         $statement = $this->db->prepare($this->query);
         foreach ($this->fields as $key => $value) {
             $statement->bindValue(":$key", $value);
         }
+        // var_dump($this->query);
+        // exit;   
         return $statement->execute();
     }
     public function delete(): MysqlDatabase
